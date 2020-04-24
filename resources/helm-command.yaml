@@ -1,0 +1,8 @@
+repo: https://artifactory-lvn.broadcom.net/artifactory/helm-release-candidate-local
+chart: helm-helloworld/helloworld-0.1.tgz
+values: ./resources/values.yaml
+command: upgrade
+commandOptions: --debug --install
+releaseName: demo
+images:
+  helloworld: docker-release-candidate-local.artifactory-lvn.broadcom.net/helm-helloworld/helloworld:demo1

@@ -1,0 +1,13 @@
+- name: docker
+  image:
+    name: std-docker-img
+    tag: v1.0.1
+  artifactory:
+    url: docker.artifactory/repo-name/
+
+- name: helm
+  image:
+    name: std-helm-chart
+    tag: v1.0.1
+  artifactory:
+    url: helm.artifactory/repo-name/

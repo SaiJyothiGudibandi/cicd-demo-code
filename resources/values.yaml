@@ -1,0 +1,68 @@
+# Default values for helloworld-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+openshift:
+  enabled: true
+  # Application Hostname: The exposed hostname that will be used for the route to the helloworld service.
+  applicationHostname: app.gdue4.saasdev.broadcom.com
+  # If the router is for *.app, set router to "app". If the router is for *.infra, set router to "infra"
+  router: app
+  annotations:
+  # Remove the annotation brackets, uncomment the haproxy.router.openshift.io/iop_whitelist annotation line below and list appropriate IP addresses, in order to limit access
+  # to the route to a defined list of ip address ranges
+  # See https://docs.openshift.com/container-platform/3.11/architecture/networking/routes.html#whitelist for the format of the IP address list (space delimited)
+  # Default Broadcom IP network address ranges include 192.19.0.0/16 202.86.248.0/24 202.153.6.0/24 130.119.0.0/16 130.200.0.0/16 138.42.0.0/16 141.202.0.0/16 155.35.0.0/16
+  # Reach out to Broadcom IT (e.g. via a 1.Support ticket) if you need to identify any other IP address ranges
+  # haproxy.router.openshift.io/ip_whitelist: <REPLACE WITH IP ADDRESSES>
+  # To define load-balancing behaviour, uncomment out the following and set it to either source, roundrobin or leastconn
+  # haproxy.router.openshift.io/balance: roundrobin
+
+replicaCount: 1
+
+image:
+  repository: gcr.io/saaspoc-gtso-enterprise-gke/gkegtsoent/hello-world
+  tag: demo1
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  name: helloworld
+  type: ClusterIP
+  port: 8080
+  annotations: {}
+  # cloud.google.com/neg: '{"ingress": true}'
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+#   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
