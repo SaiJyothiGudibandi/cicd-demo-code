@@ -1,13 +1,18 @@
+- name: publish
+  flag: yes
+
+- name: artifactory
+  url: docker-release-local.artifactory-lvn.broadcom.net/std-cicd-demo-live/
+
 - name: docker
   image:
-    name: std-docker-img
-    tag: v1.0.1
-  artifactory:
-    url: docker.artifactory/repo-name/
+    name: hello-world
+    tag: 1.0.1
+
+- name: gcr
+  url: gcr.io/saaspoc-gtso-enterprise-gke/gkegtsoent/
 
 - name: helm
-  image:
-    name: std-helm-chart
-    tag: v1.0.1
-  artifactory:
-    url: helm.artifactory/repo-name/
+  chart:
+    name: helm-hello-world
+    tag: 1.0.1

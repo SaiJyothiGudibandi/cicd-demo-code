@@ -1,0 +1,15 @@
+- name: code-test
+  test1:
+    name: unit-test
+    source: resources/junit.xml
+    commands:
+       "echo run junit"
+    properties:
+      key: value
+  test2:
+    name: integration-test
+    source: resources/integration-test.xml
+    commands:
+       "echo run integration-test"
+    properties:
+      key: value

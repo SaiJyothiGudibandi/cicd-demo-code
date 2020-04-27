@@ -1,0 +1,4 @@
+- name: code-build
+  source: "."
+  commands:
+    "echo mvn build"

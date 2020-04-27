@@ -1,0 +1,19 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ include "helloworld.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "helloworld.name" . }}
+    helm.sh/chart: {{ include "helloworld.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  backend:
+    serviceName: {{ include "helloworld.fullname" . }}
+    servicePort: http
+{{- end }}

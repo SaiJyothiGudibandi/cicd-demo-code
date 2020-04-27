@@ -1,3 +1,0 @@
-- name: junit-only
-  source: "."
-  junit: resources/junit.xml

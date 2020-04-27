@@ -1,4 +1,15 @@
-- name: sonar-qube
-  source: "."
-  properties:
-    key: value
+- name: code-scan
+  scan1:
+    name: sonar-cube
+    source: "."
+    commands:
+       "echo run sonar-cube"
+    properties:
+      key: value
+  scan2:
+    name: coverity
+    source: "."
+    commands:
+       "echo run sonar-cube"
+    properties:
+      key: value
