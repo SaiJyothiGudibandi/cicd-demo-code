@@ -1,4 +1,4 @@
-@Library('Standard_CICD_Library@master')_
+@Library('Test-std-cicd-sg037737@master')_
 
 standardPipeline code_build_config: "resources/code-build-info.yaml",
 code_scan_config: "resources/code-scan-info.yaml",
